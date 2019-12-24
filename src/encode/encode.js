@@ -1,5 +1,6 @@
 import compress from './compress'
 import compressPNG from './compressPNG'
+import main from './main'
 
 function encode(bufs, w, h, ps, dels, tabs, forbidPlte)
 {

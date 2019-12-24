@@ -1,4 +1,5 @@
 import getBPP from './getBPP'
+import * as bin from '../shared/bin'
 
 function decodeImage(data, w, h, out)
 {

@@ -1,5 +1,6 @@
 import stats from './stats'
 import splitPixels from './splitPixels'
+import estats from './estats'
 
 function getKDtree(nimg, ps, err) {
 	if(err==null) err = 0.0001;

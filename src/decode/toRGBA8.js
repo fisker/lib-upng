@@ -1,4 +1,5 @@
 import decodeImage from './decodeImage'
+import copyTile from '../shared/copyTile'
 
 function toRGBA8(out)
 {

@@ -1,8 +1,7 @@
-
 import estats from './estats'
 import planeDst from './planeDst'
 import getKDtree from './getKDtree'
-
+import getNearest from './getNearest'
 
 function quantize(abuf, ps)
 {	

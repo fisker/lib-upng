@@ -1,6 +1,6 @@
 
 import prepareDiff from './prepareDiff'
-import copyTile from './copyTile'
+import copyTile from '../shared/copyTile'
 
 function updateFrame(bufs, w,h, frms, i, r, evenCrd) {
 	var U8 = Uint8Array, U32 = Uint32Array;

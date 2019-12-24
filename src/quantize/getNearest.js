@@ -1,10 +1,10 @@
 import dist from './dist'
-import planeDst from './planeDst'
+import planeDstFunction from './planeDst'
 
 function getNearest(nd, r,g,b,a)
 {
 	if(nd.left==null) {  nd.tdst = dist(nd.est.q,r,g,b,a);  return nd;  }
-	var planeDst = planeDst(nd.est,r,g,b,a);
+	var planeDst = planeDstFunction(nd.est,r,g,b,a);
 	
 	var node0 = nd.left, node1 = nd.right;
 	if(planeDst>0) {  node0=nd.right;  node1=nd.left;  }

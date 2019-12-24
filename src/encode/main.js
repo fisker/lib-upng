@@ -1,8 +1,9 @@
 import * as bin from '../shared/bin'
+import {crc as crcFunction} from './crc'
 
 function main(nimg, w, h, dels, tabs) {
 	if(tabs==null) tabs={};
-	var crc = UPNG.crc.crc, wUi = bin.writeUint, wUs = bin.writeUshort, wAs = bin.writeASCII;
+	var crc = crcFunction, wUi = bin.writeUint, wUs = bin.writeUshort, wAs = bin.writeASCII;
 	var offset = 8, anim = nimg.frames.length>1, pltAlpha = false;
 	
 	var leng = 8 + (16+5+4) /*+ (9+4)*/ + (anim ? 20 : 0);

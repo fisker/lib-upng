@@ -1,4 +1,4 @@
-import {inflate as inflateRaw} from 'pako'
+import {inflateRaw} from 'pako'
 
 function inflate(data, buff) {  var out=inflateRaw(new Uint8Array(data.buffer, 2,data.length-6),buff);  return out;  }
 

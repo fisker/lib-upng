@@ -1,4 +1,4 @@
-import copyTile from './copyTile'
+import copyTile from '../shared/copyTile'
 
 function prepareDiff(cimg, w,h, nimg, rec) {
 	copyTile(cimg,w,h, nimg,rec.width,rec.height, -rec.x,-rec.y, 2);
