@@ -1,0 +1,3 @@
+[submodule "UPNG.js"]
+	path = UPNG.js
+	url = git@github.com:photopea/UPNG.js.git
