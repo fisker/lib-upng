@@ -1,7 +1,4 @@
-
-var UPNG = {};
-
-	
+import copyTile from './utils/copy-tile'
 
 UPNG.toRGBA8 = function(out)
 {
@@ -20,13 +17,13 @@ UPNG.toRGBA8 = function(out)
 		
 		if(i!=0) for(var j=0; j<len; j++) prev[j]=img[j];
 		
-		if     (frm.blend==0) UPNG._copyTile(fdata, fw, fh, img, w, h, fx, fy, 0);
-		else if(frm.blend==1) UPNG._copyTile(fdata, fw, fh, img, w, h, fx, fy, 1);
+		if     (frm.blend==0) copyTile(fdata, fw, fh, img, w, h, fx, fy, 0);
+		else if(frm.blend==1) copyTile(fdata, fw, fh, img, w, h, fx, fy, 1);
 		
 		frms.push(img.buffer.slice(0));
 		
 		if     (frm.dispose==0) {}
-		else if(frm.dispose==1) UPNG._copyTile(empty, fw, fh, img, w, h, fx, fy, 0);
+		else if(frm.dispose==1) copyTile(empty, fw, fh, img, w, h, fx, fy, 0);
 		else if(frm.dispose==2) for(var j=0; j<len; j++) img[j]=prev[j];
 	}
 	return frms;
@@ -372,43 +369,7 @@ UPNG._bin = {
 		return  ns;
 	}
 }
-UPNG._copyTile = function(sb, sw, sh, tb, tw, th, xoff, yoff, mode)
-{
-	var w = Math.min(sw,tw), h = Math.min(sh,th);
-	var si=0, ti=0;
-	for(var y=0; y<h; y++)
-		for(var x=0; x<w; x++)
-		{
-			if(xoff>=0 && yoff>=0) {  si = (y*sw+x)<<2;  ti = (( yoff+y)*tw+xoff+x)<<2;  }
-			else                   {  si = ((-yoff+y)*sw-xoff+x)<<2;  ti = (y*tw+x)<<2;  }
-			
-			if     (mode==0) {  tb[ti] = sb[si];  tb[ti+1] = sb[si+1];  tb[ti+2] = sb[si+2];  tb[ti+3] = sb[si+3];  }
-			else if(mode==1) {
-				var fa = sb[si+3]*(1/255), fr=sb[si]*fa, fg=sb[si+1]*fa, fb=sb[si+2]*fa; 
-				var ba = tb[ti+3]*(1/255), br=tb[ti]*ba, bg=tb[ti+1]*ba, bb=tb[ti+2]*ba; 
-				
-				var ifa=1-fa, oa = fa+ba*ifa, ioa = (oa==0?0:1/oa);
-				tb[ti+3] = 255*oa;  
-				tb[ti+0] = (fr+br*ifa)*ioa;  
-				tb[ti+1] = (fg+bg*ifa)*ioa;   
-				tb[ti+2] = (fb+bb*ifa)*ioa;  
-			}
-			else if(mode==2){	// copy only differences, otherwise zero
-				var fa = sb[si+3], fr=sb[si], fg=sb[si+1], fb=sb[si+2]; 
-				var ba = tb[ti+3], br=tb[ti], bg=tb[ti+1], bb=tb[ti+2]; 
-				if(fa==ba && fr==br && fg==bg && fb==bb) {  tb[ti]=0;  tb[ti+1]=0;  tb[ti+2]=0;  tb[ti+3]=0;  }
-				else {  tb[ti]=fr;  tb[ti+1]=fg;  tb[ti+2]=fb;  tb[ti+3]=fa;  }
-			}
-			else if(mode==3){	// check if can be blended
-				var fa = sb[si+3], fr=sb[si], fg=sb[si+1], fb=sb[si+2]; 
-				var ba = tb[ti+3], br=tb[ti], bg=tb[ti+1], bb=tb[ti+2]; 
-				if(fa==ba && fr==br && fg==bg && fb==bb) continue;
-				//if(fa!=255 && ba!=0) return false;
-				if(fa<220 && ba>20) return false;
-			}
-		}
-	return true;
-}
+UPNG._copyTile = copyTile
 
 
 
@@ -692,12 +653,12 @@ UPNG.encode.framize = function(bufs,w,h,alwaysBlend,evenCrd,forbidPrev) {
 			if(tstp==1) frms[j-1].dispose = 2;
 			
 			nimg = new Uint8Array(nw*nh*4);
-			UPNG._copyTile(pimg,w,h, nimg,nw,nh, -nx,-ny, 0);
+			copyTile(pimg,w,h, nimg,nw,nh, -nx,-ny, 0);
 			
-			blend =  UPNG._copyTile(cimg,w,h, nimg,nw,nh, -nx,-ny, 3) ? 1 : 0;
+			blend =  copyTile(cimg,w,h, nimg,nw,nh, -nx,-ny, 3) ? 1 : 0;
 			if(blend==1) UPNG.encode._prepareDiff(cimg,w,h,nimg,{x:nx,y:ny,width:nw,height:nh});
-			else         UPNG._copyTile(cimg,w,h, nimg,nw,nh, -nx,-ny, 0);
-			//UPNG._copyTile(cimg,w,h, nimg,nw,nh, -nx,-ny, blend==1?2:0);
+			else         copyTile(cimg,w,h, nimg,nw,nh, -nx,-ny, 0);
+			//copyTile(cimg,w,h, nimg,nw,nh, -nx,-ny, blend==1?2:0);
 		}
 		else nimg = cimg.slice(0);	// img may be rewritten further ... don't rewrite input
 		
@@ -750,19 +711,19 @@ UPNG.encode._updateFrame = function(bufs, w,h, frms, i, r, evenCrd) {
 	
 	var fr = frms[i];  fr.rect = r;  fr.blend = 1;  fr.img = new Uint8Array(r.width*r.height*4);
 	if(frms[i-1].dispose==0) {
-		UPNG._copyTile(pimg,w,h, fr.img,r.width,r.height, -r.x,-r.y, 0);
+		copyTile(pimg,w,h, fr.img,r.width,r.height, -r.x,-r.y, 0);
 		UPNG.encode._prepareDiff(cimg,w,h,fr.img,r);
-		//UPNG._copyTile(cimg,w,h, fr.img,r.width,r.height, -r.x,-r.y, 2);
+		//copyTile(cimg,w,h, fr.img,r.width,r.height, -r.x,-r.y, 2);
 	}
 	else
-		UPNG._copyTile(cimg,w,h, fr.img,r.width,r.height, -r.x,-r.y, 0);
+		copyTile(cimg,w,h, fr.img,r.width,r.height, -r.x,-r.y, 0);
 }
 UPNG.encode._prepareDiff = function(cimg, w,h, nimg, rec) {
-	UPNG._copyTile(cimg,w,h, nimg,rec.width,rec.height, -rec.x,-rec.y, 2);
+	copyTile(cimg,w,h, nimg,rec.width,rec.height, -rec.x,-rec.y, 2);
 	/*
 	var n32 = new Uint32Array(nimg.buffer);
 	var og = new Uint8Array(rec.width*rec.height*4), o32 = new Uint32Array(og.buffer);
-	UPNG._copyTile(cimg,w,h, og,rec.width,rec.height, -rec.x,-rec.y, 0);
+	copyTile(cimg,w,h, og,rec.width,rec.height, -rec.x,-rec.y, 0);
 	for(var i=4; i<nimg.length; i+=4) {
 		if(nimg[i-1]!=0 && nimg[i+3]==0 && o32[i>>>2]==o32[(i>>>2)-1]) {
 			n32[i>>>2]=o32[i>>>2];
