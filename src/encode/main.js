@@ -1,11 +1,11 @@
 import * as bin from '../shared/bin'
-import {crc as crcFunction} from './crc'
+import crc from './crc'
 
 function main(nimg, w, h, dels, tabs) {
 	if(tabs==null) tabs={};
-	var crc = crcFunction, wUi = bin.writeUint, wUs = bin.writeUshort, wAs = bin.writeASCII;
+	var wUi = bin.writeUint, wUs = bin.writeUshort, wAs = bin.writeASCII;
 	var offset = 8, anim = nimg.frames.length>1, pltAlpha = false;
-	
+
 	var leng = 8 + (16+5+4) /*+ (9+4)*/ + (anim ? 20 : 0);
 	if(tabs["sRGB"]!=null) leng += 8+1+4;
 	if(tabs["pHYs"]!=null) leng += 8+9+4;
@@ -21,12 +21,12 @@ function main(nimg, w, h, dels, tabs) {
 		leng += fr.cimg.length + 12;
 		if(j!=0) leng+=4;
 	}
-	leng += 12; 
-	
+	leng += 12;
+
 	var data = new Uint8Array(leng);
 	var wr=[0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
 	for(var i=0; i<8; i++) data[i]=wr[i];
-	
+
 	wUi(data,offset, 13);     offset+=4;
 	wAs(data,offset,"IHDR");  offset+=4;
 	wUi(data,offset,w);  offset+=4;
@@ -81,7 +81,7 @@ function main(nimg, w, h, dels, tabs) {
 			wUi(data,offset,crc(data,offset-dl-4,dl+4));  offset+=4; // crc
 		}
 	}
-	
+
 	var fi = 0;
 	for(var j=0; j<nimg.frames.length; j++)
 	{
@@ -100,7 +100,7 @@ function main(nimg, w, h, dels, tabs) {
 			data[offset] = fr.blend  ;  offset++;	// blend
 			wUi(data,offset,crc(data,offset-30,30));  offset+=4; // crc
 		}
-				
+
 		var imgd = fr.cimg, dl = imgd.length;
 		wUi(data,offset, dl+(j==0?0:4));     offset+=4;
 		var ioff = offset;

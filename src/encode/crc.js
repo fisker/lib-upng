@@ -14,8 +14,4 @@ return c;
 }
 function crc(b,o,l)  {  return update(0xffffffff,b,o,l) ^ 0xffffffff;  }
 
-export {
-  table,
-  update,
-  crc
-}
+export default crc

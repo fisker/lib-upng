@@ -1,5 +1,5 @@
-import IHDR from './IHDR'
 import * as bin from '../shared/bin'
+import IHDR from './IHDR'
 import decompress from './decompress'
 
 function decode(buff)
@@ -8,7 +8,7 @@ function decode(buff)
 	var out = {tabs:{}, frames:[]};
 	var dd = new Uint8Array(data.length), doff = 0;	 // put all IDAT data into it
 	var fd, foff = 0;	// frames
-	
+
 	var mgck = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
 	for(var i=0; i<8; i++) if(data[i]!=mgck[i]) throw "The input is not a PNG file!";
 
@@ -17,7 +17,7 @@ function decode(buff)
 		var len  = bin.readUint(data, offset);  offset += 4;
 		var type = bin.readASCII(data, offset, 4);  offset += 4;
 		//console.log(type,len);
-		
+
 		if     (type=="IHDR")  {  IHDR(data, offset, out);  }
 		else if(type=="IDAT") {
 			for(var i=0; i<len; i++) dd[doff+i] = data[offset+i];
@@ -98,9 +98,9 @@ function decode(buff)
 	}
 	if(foff!=0) {  var fr = out.frames[out.frames.length-1];
 		fr.data = decompress(out, fd.slice(0,foff), fr.rect.width, fr.rect.height);  foff=0;
-	}	
+	}
 	out.data = decompress(out, dd, out.width, out.height);
-	
+
 	delete out.compress;  delete out.interlace;  delete out.filter;
 	return out;
 }

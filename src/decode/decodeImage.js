@@ -1,5 +1,5 @@
-import getBPP from './getBPP'
 import * as bin from '../shared/bin'
+import getBPP from './getBPP'
 
 function decodeImage(data, w, h, out)
 {
@@ -9,7 +9,7 @@ function decodeImage(data, w, h, out)
 	var bf = new Uint8Array(area*4), bf32 = new Uint32Array(bf.buffer);
 	var ctype = out.ctype, depth = out.depth;
 	var rs = bin.readUshort;
-	
+
 	//console.log(ctype, depth);
 	var time = Date.now();
 

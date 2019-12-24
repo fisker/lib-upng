@@ -1,6 +1,6 @@
 
-import filterLine from './filterLine'
 import {deflate} from 'pako'
+import filterLine from './filterLine'
 
 function filterZero(img,h,bpp,bpl,data, filter, levelZero)
 {
@@ -8,7 +8,7 @@ function filterZero(img,h,bpp,bpl,data, filter, levelZero)
 	if     (filter!=-1)             ftry=[filter];
 	else if(h*bpl>500000 || bpp==1) ftry=[0];
 	var opts;  if(levelZero) opts={level:0};
-	
+
 	for(var i=0; i<ftry.length; i++) {
 		for(var y=0; y<h; y++) filterLine(data, img, y, bpl, bpp, ftry[i]);
 		//var nimg = new Uint8Array(data.length);
