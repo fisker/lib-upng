@@ -3,6 +3,11 @@ export default {
   output: [
     {
       file: 'dist/index.js',
+      format: 'umd',
+      name: 'UPNG',
+    },
+    {
+      file: 'dist/index.common.js',
       format: 'cjs',
     },
     {
