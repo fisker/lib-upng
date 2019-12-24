@@ -26,12 +26,28 @@
     "lint:eslint": "eslint \"**/*.{js,mjs,vue}\"",
     "lint:markdown": "markdownlint \"**/*.md\" --ignore \"**/{node_modules,UPNG.js}/**\"",
     "lint:package-json": "yarn run format:package-json --check",
-    "lint:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --check"
+    "lint:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --check",
+    "test": "ava",
+    "test-coverage": "nyc ava"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "ava": {
+    "require": "esm",
+    "verbose": true
+  },
+  "nyc": {
+    "include": [
+      "src/**"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "require": "esm"
   },
   "dependencies": {
     "pako": "1.0.10"
@@ -40,16 +56,21 @@
     "@commitlint/cli": "8.2.0",
     "@fisker/commitlint-config": "1.1.4",
     "@fisker/eslint-config": "1.5.6",
+    "@fisker/eslint-config-ava": "1.2.5",
     "@fisker/husky-config": "1.1.5",
     "@fisker/lint-staged-config": "1.0.8",
     "@fisker/prettier-config": "1.0.24",
+    "ava": "2.4.0",
     "cz-conventional-changelog": "3.0.2",
     "del-cli": "3.0.0",
     "eslint": "6.8.0",
+    "esm": "3.2.25",
     "husky": "3.1.0",
+    "is-png": "2.0.0",
     "lint-staged": "9.5.0",
     "markdownlint-cli": "0.20.0",
     "npm-run-all": "4.1.5",
+    "nyc": "15.0.0",
     "prettier": "1.19.1",
     "rollup": "1.27.14",
     "sort-package-json": "1.31.0",
