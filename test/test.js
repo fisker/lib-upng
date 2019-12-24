@@ -4,6 +4,8 @@ import isPng from 'is-png'
 import test from 'ava'
 import * as UPNG from '../src'
 
+// Tests from `imagemin-upng`, need refactor
+
 function upng(options) {
   options = {
     cnum: 256,
