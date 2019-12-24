@@ -1,7 +1,15 @@
 {
   "name": "upng-bundled",
   "version": "0.0.0",
-  "repository": "git@github.com:fisker/upng-bundled.git",
+  "description": "UPNG.js bundled versions",
+  "keywords": [
+    "UPNG",
+    "UPNG.js",
+    "cjs",
+    "umd",
+    "esm"
+  ],
+  "repository": "fisker/upng-bundled",
   "license": "MIT",
   "author": {
     "name": "fisker Cheung",
@@ -12,7 +20,11 @@
     "dist"
   ],
   "sideEffects": false,
-  "main": "index.js",
+  "main": "dist/index.common.js",
+  "jsdelivr": "dist/index.js",
+  "unpkg": "dist/index.js",
+  "module": "dist/index.mjs",
+  "browser": "dist/index.js",
   "scripts": {
     "build": "run-p build:*",
     "build:js": "rollup --config",
