@@ -15,12 +15,12 @@ jobs:
       matrix:
         PLATFORM:
           - "ubuntu-latest"
-          # - "macos-latest"
-          # - "windows-latest"
+          - "macos-latest"
+          - "windows-latest"
         NODE:
-          # - "13"
+          - "13"
           - "12"
-          # - "10"
+          - "10"
         # exclude:
         #   - PLATFORM: "macos-latest"
         #     NODE: "12"
