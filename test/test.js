@@ -35,7 +35,6 @@ function upng(options) {
   }
 }
 
-
 function getFixture(file) {
   return path.join(__dirname, 'fixtures', file)
 }
