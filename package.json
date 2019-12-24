@@ -1,17 +1,64 @@
 {
   "name": "upng",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "git@github.com:fisker/upng.git",
-  "author": "fisker <lionkay@gmail.com>",
   "license": "MIT",
+  "author": {
+    "name": "fisker Cheung",
+    "email": "lionkay@gmail.com",
+    "url": "https://www.fiskercheung.com/"
+  },
+  "sideEffects": false,
+  "main": "index.js",
+  "scripts": {
+    "build": "run-p build:*",
+    "build:js": "rollup --config",
+    "clean": "run-p clean:*",
+    "clean:dist": "del-cli dist",
+    "dist": "run-p dist:*",
+    "dist:npm": "np --yolo --no-yarn",
+    "format": "run-p format:*",
+    "format:eslint": "yarn lint:eslint --fix",
+    "format:markdown": "yarn lint:markdown --fix",
+    "format:package-json": "sort-package-json \"package.json\" \"packages/*/package.json\"",
+    "format:prettier": "yarn lint:prettier --write",
+    "format:stylelint": "yarn lint:stylelint --fix",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint \"**/*.{js,mjs,vue}\"",
+    "lint:markdown": "markdownlint \"**/*.md\" --ignore \"**/node_modules/**\"",
+    "lint:package-json": "yarn run format:package-json --check",
+    "lint:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --check",
+    "lint:stylelint": "stylelint \"**/*.{css,scss,less}\""
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "dependencies": {
     "pako": "1.0.10"
   },
   "devDependencies": {
-    "rollup": "1.27.14"
+    "@commitlint/cli": "8.2.0",
+    "@fisker/commitlint-config": "1.1.4",
+    "@fisker/eslint-config": "1.5.6",
+    "@fisker/husky-config": "1.1.5",
+    "@fisker/lint-staged-config": "1.0.8",
+    "@fisker/prettier-config": "1.0.24",
+    "cz-conventional-changelog": "3.0.2",
+    "del-cli": "3.0.0",
+    "eslint": "6.8.0",
+    "husky": "3.1.0",
+    "lint-staged": "9.5.0",
+    "markdownlint-cli": "0.20.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "1.19.1",
+    "rollup": "1.27.14",
+    "sort-package-json": "1.31.0",
+    "stylelint": "12.0.0"
   },
-  "scripts": {
-    "build": "rollup --config"
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
