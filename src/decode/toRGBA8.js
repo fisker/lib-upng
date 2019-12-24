@@ -1,4 +1,4 @@
-import decodeImage from './decode-image'
+import decodeImage from './decodeImage'
 
 function toRGBA8(out)
 {

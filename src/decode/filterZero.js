@@ -1,4 +1,4 @@
-import paeth from './paeth'
+import paeth from '../shared/paeth'
 import getBPP from './getBPP'
 
 function filterZero(data, out, off, w, h)

@@ -1,4 +1,4 @@
-import bin from '../shared/bin'
+import * as bin from '../shared/bin'
 
 function main(nimg, w, h, dels, tabs) {
 	if(tabs==null) tabs={};

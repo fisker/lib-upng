@@ -1,7 +1,6 @@
 import IHDR from './IHDR'
-import * as bin from './bin'
+import * as bin from '../shared/bin'
 import decompress from './decompress'
-
 
 function decode(buff)
 {

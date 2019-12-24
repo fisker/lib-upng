@@ -2,7 +2,7 @@
 import prepareDiff from './prepareDiff'
 import copyTile from './copyTile'
 
-function(bufs, w,h, frms, i, r, evenCrd) {
+function updateFrame(bufs, w,h, frms, i, r, evenCrd) {
 	var U8 = Uint8Array, U32 = Uint32Array;
 	var pimg = new U8(bufs[i-1]), pimg32 = new U32(bufs[i-1]), nimg = i+1<bufs.length ? new U8(bufs[i+1]):null;
 	var cimg = new U8(bufs[i]), cimg32 = new U32(cimg.buffer);

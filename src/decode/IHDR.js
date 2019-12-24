@@ -1,6 +1,6 @@
 import {
   readUint
-} from './bin'
+} from '../shared/bin'
 
 function IHDR(data, offset, out)
 {

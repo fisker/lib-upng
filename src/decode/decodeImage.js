@@ -63,4 +63,4 @@ function decodeImage(data, w, h, out)
 	return bf;
 }
 
-export decodeImage
+export default decodeImage
