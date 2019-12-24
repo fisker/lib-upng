@@ -1,13 +1,16 @@
 {
-  "name": "upng",
-  "version": "1.0.0",
-  "repository": "git@github.com:fisker/upng.git",
+  "name": "upng-bundled",
+  "version": "0.0.0",
+  "repository": "git@github.com:fisker/upng-bundled.git",
   "license": "MIT",
   "author": {
     "name": "fisker Cheung",
     "email": "lionkay@gmail.com",
     "url": "https://www.fiskercheung.com/"
   },
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "main": "index.js",
   "scripts": {
