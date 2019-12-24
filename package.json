@@ -42,6 +42,7 @@
     "lint:markdown": "markdownlint \"**/*.md\" --ignore \"**/{node_modules,UPNG.js}/**\"",
     "lint:package-json": "yarn run format:package-json --check",
     "lint:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --check",
+    "release": "run-s lint build format test dist",
     "test": "ava",
     "test-coverage": "nyc ava"
   },
