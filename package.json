@@ -1,7 +1,7 @@
 {
-  "name": "upng-bundled",
+  "name": "lib-upng",
   "version": "0.0.0",
-  "description": "UPNG.js bundled versions",
+  "description": "UPNG.js",
   "keywords": [
     "UPNG",
     "UPNG.js",
@@ -9,7 +9,7 @@
     "umd",
     "esm"
   ],
-  "repository": "fisker/upng-bundled",
+  "repository": "fisker/upng",
   "license": "MIT",
   "author": {
     "name": "fisker Cheung",
