@@ -44,7 +44,7 @@
     "lint:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --check",
     "release": "run-s lint build format test dist",
     "test": "ava",
-    "test-coverage": "nyc ava"
+    "test-coverage": "nyc yarn test"
   },
   "config": {
     "commitizen": {
@@ -52,18 +52,16 @@
     }
   },
   "ava": {
-    "require": "esm",
+    "require": [
+      "esm"
+    ],
     "verbose": true
   },
   "nyc": {
-    "include": [
-      "src/**"
-    ],
     "reporter": [
       "lcov",
       "text"
-    ],
-    "require": "esm"
+    ]
   },
   "dependencies": {
     "pako": "1.0.10"
