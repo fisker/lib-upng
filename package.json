@@ -73,7 +73,7 @@
     "@fisker/eslint-config": "1.6.1",
     "@fisker/eslint-config-ava": "1.2.6",
     "@fisker/husky-config": "1.1.7",
-    "@fisker/lint-staged-config": "1.0.10",
+    "@fisker/lint-staged-config": "1.0.11",
     "@fisker/prettier-config": "1.0.27",
     "ava": "3.1.0",
     "cz-conventional-changelog": "3.1.0",
