@@ -9,7 +9,12 @@
     "umd",
     "esm"
   ],
-  "repository": "fisker/upng",
+  "homepage": "https://github.com/fisker/lib-upng#readme",
+  "bugs": {
+    "url": "https://github.com/fisker/lib-upng/issues"
+  },
+  "repository": "fisker/lib-upng",
+  "funding": "https://github.com/fisker/lib-upng?sponsor=1",
   "license": "MIT",
   "author": {
     "name": "fisker Cheung",
