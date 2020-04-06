@@ -81,7 +81,7 @@
     "@fisker/husky-config": "2.1.0",
     "@fisker/lint-staged-config": "2.1.0",
     "@fisker/prettier-config": "2.1.0",
-    "ava": "3.5.2",
+    "ava": "3.6.0",
     "cz-conventional-changelog": "3.1.0",
     "del-cli": "3.0.0",
     "eslint": "6.8.0",
