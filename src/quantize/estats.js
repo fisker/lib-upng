@@ -16,9 +16,9 @@ function estats(stats){
 	var b = [0.5,0.5,0.5,0.5], mi = 0, tmi = 0;
 	
 	if(N!=0)
-	for(var i=0; i<10; i++) {
+	for(var i=0; i<16; i++) {
 		b = M.multVec(A, b);  tmi = Math.sqrt(M.dot(b,b));  b = M.sml(1/tmi,  b);
-		if(Math.abs(tmi-mi)<1e-9) break;  mi = tmi;
+		if(i!=0 && Math.abs(tmi-mi)<1e-9) break;  mi = tmi;
 	}	
 	//b = [0,0,1,0];  mi=N;
 	var q = [m0*iN, m1*iN, m2*iN, m3*iN];
