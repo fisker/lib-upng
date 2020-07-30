@@ -13,7 +13,12 @@ function estats(stats){
 	];
 	
 	var A = Rj, M = M4;
-	var b = [Math.random(),Math.random(),Math.random(),Math.random()], mi = 0, tmi = 0;
+  // @fisker This commit
+  // https://github.com/photopea/UPNG.js/commit/76bbcd080b198a1423f0e40e00936574ac4d4cb5
+  // Use `Math.random()` makes output random
+  // We don't want that
+	// var b = [Math.random(),Math.random(),Math.random(),Math.random()], mi = 0, tmi = 0;
+  var b = [0.5,0.5,0.5,0.5], mi = 0, tmi = 0;
 	
 	if(N!=0)
 	for(var i=0; i<16; i++) {
