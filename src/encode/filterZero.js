@@ -9,6 +9,10 @@ function filterZero(img,h,bpp,bpl,data, filter, levelZero)
 	else if(h*bpl>500000 || bpp==1) ftry=[0];
 	var opts;  if(levelZero) opts={level:0};
 
+  // [@fisker] https://github.com/photopea/UPNG.js/commit/7bb5540f1b0e0cef354ab79f0ffebfcc82b07926
+  // Use `UZIP.deflate` for data.length>10e6
+
+  var time = Date.now();
 	for(var i=0; i<ftry.length; i++) {
 		for(var y=0; y<h; y++) filterLine(data, img, y, bpl, bpp, ftry[i]);
 		//var nimg = new Uint8Array(data.length);
@@ -18,6 +22,7 @@ function filterZero(img,h,bpp,bpl,data, filter, levelZero)
 		//console.log(crc, UZIP.adler(data,2,data.length-6));
 		fls.push(deflate(data,opts));
 	}
+
 	var ti, tsize=1e9;
 	for(var i=0; i<fls.length; i++) if(fls[i].length<tsize) {  ti=i;  tsize=fls[i].length;  }
 	return fls[ti];

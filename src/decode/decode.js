@@ -19,6 +19,7 @@ function decode(buff)
 		//console.log(type,len);
 
 		if     (type=="IHDR")  {  IHDR(data, offset, out);  }
+		else if(type=="CgBI")  {  out.tabs[type] = data.slice(offset,offset+4);  }
 		else if(type=="IDAT") {
 			for(var i=0; i<len; i++) dd[doff+i] = data[offset+i];
 			doff += len;
@@ -65,7 +66,12 @@ function decode(buff)
 			var ltag = bin.readASCII(data, off, nz-off);  off = nz + 1;
 			nz = bin.nextZero(data, off);
 			var tkeyw = bin.readUTF8(data, off, nz-off);  off = nz + 1;
-			var text  = bin.readUTF8(data, off, len-(off-offset));
+			var text, tl=len-(off-offset);
+			if(cflag==0) text  = bin.readUTF8(data, off, tl);
+			else {
+				var bfr = UPNG.decode._inflate(data.slice(off,off+tl));
+				text = bin.readUTF8(bfr,0,bfr.length);
+			}
 			out.tabs[type][keyw] = text;
 		}
 		else if(type=="PLTE") {

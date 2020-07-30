@@ -1,3 +1,4 @@
+import {inflateRaw} from 'pako'
 import getBPP from './getBPP'
 import filterZero from './filterZero'
 import readInterlace from './readInterlace'
@@ -6,7 +7,8 @@ import inflate from './inflate'
 function decompress(out, dd, w, h) {
 	var time = Date.now();
 	var bpp = getBPP(out), bpl = Math.ceil(w*bpp/8), buff = new Uint8Array((bpl+1+out.interlace)*h);
-	dd = inflate(dd,buff);
+	if(out.tabs["CgBI"]) dd = inflateRaw(dd,buff);
+	else                 dd = inflate(dd,buff);
 	//console.log(dd.length, buff.length);
 	//console.log(Date.now()-time);
 
