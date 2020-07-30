@@ -73,6 +73,22 @@ test('optimize APNG', async (t) => {
   t.true(isPng(data))
 })
 
+test('file 1 from `pngquant` project', async (t) => {
+  const buffer = readFixture('test.png')
+  const data = await upng()(buffer)
+
+  t.true(data.length < buffer.length)
+  t.true(isPng(data))
+})
+
+test('file 2 from `pngquant` project', async (t) => {
+  const buffer = readFixture('metadata.png')
+  const data = await upng()(buffer)
+
+  t.true(data.length, buffer.length)
+  t.true(isPng(data))
+})
+
 test('support options', async (t) => {
   const buffer = readFixture('png.png')
   const data = await upng({
