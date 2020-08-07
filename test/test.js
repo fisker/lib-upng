@@ -85,7 +85,7 @@ test('file 2 from `pngquant` project', async (t) => {
   const buffer = readFixture('metadata.png')
   const data = await upng()(buffer)
 
-  t.true(data.length, buffer.length)
+  t.true(data.length < buffer.length)
   t.true(isPng(data))
 })
 
