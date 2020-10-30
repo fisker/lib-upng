@@ -1,5 +1,5 @@
-import * as bin from '../shared/bin'
-import getBPP from './getBPP'
+import * as bin from '../shared/bin.mjs'
+import getBPP from './getBPP.mjs'
 
 function decodeImage(data, w, h, out)
 {

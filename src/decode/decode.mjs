@@ -1,7 +1,7 @@
-import * as bin from '../shared/bin'
-import IHDR from './IHDR'
-import decompress from './decompress'
-import inflate from './inflate'
+import * as bin from '../shared/bin.mjs'
+import IHDR from './IHDR.mjs'
+import decompress from './decompress.mjs'
+import inflate from './inflate.mjs'
 
 function decode(buff)
 {

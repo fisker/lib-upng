@@ -1,6 +1,6 @@
-import compress from './compress'
-import compressPNG from './compressPNG'
-import main from './main'
+import compress from './compress.mjs'
+import compressPNG from './compressPNG.mjs'
+import main from './main.mjs'
 
 function encode(bufs, w, h, ps, dels, tabs, forbidPlte)
 {

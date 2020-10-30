@@ -1,4 +1,4 @@
-import paeth from '../shared/paeth'
+import paeth from '../shared/paeth.mjs'
 
 function filterLine(data, img, y, bpl, bpp, type)
 {

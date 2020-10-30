@@ -1,5 +1,5 @@
-import dist from './dist'
-import planeDstFunction from './planeDst'
+import dist from './dist.mjs'
+import planeDstFunction from './planeDst.mjs'
 
 function getNearest(nd, r,g,b,a)
 {

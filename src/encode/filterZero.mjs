@@ -1,6 +1,8 @@
 
-import {deflate} from 'pako'
-import filterLine from './filterLine'
+import pako from 'pako'
+import filterLine from './filterLine.mjs'
+
+const {inflateRaw} = pako
 
 function filterZero(img,h,bpp,bpl,data, filter, levelZero)
 {

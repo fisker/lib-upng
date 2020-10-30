@@ -1,4 +1,4 @@
-import * as M4 from './M4'
+import * as M4 from './M4.mjs'
 
 function estats(stats){
 	var R = stats.R, m = stats.m, N = stats.N;

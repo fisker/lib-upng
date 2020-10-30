@@ -1,5 +1,5 @@
-import copyTile from '../shared/copyTile'
-import decodeImage from './decodeImage'
+import copyTile from '../shared/copyTile.mjs'
+import decodeImage from './decodeImage.mjs'
 
 function toRGBA8(out)
 {

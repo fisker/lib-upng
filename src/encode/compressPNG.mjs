@@ -1,4 +1,4 @@
-import filterZero from './filterZero'
+import filterZero from './filterZero.mjs'
 
 function compressPNG(out, filter, levelZero) {
 	for(var i=0; i<out.frames.length; i++) {

@@ -1,5 +1,5 @@
-import compressPNG from './compressPNG'
-import main from './main'
+import compressPNG from './compressPNG.mjs'
+import main from './main.mjs'
 
 function encodeLL(bufs, w, h, cc, ac, depth, dels, tabs) {
 	var nimg = {  ctype: 0 + (cc==1 ? 0 : 2) + (ac==0 ? 0 : 4),      depth: depth,  frames: []  };

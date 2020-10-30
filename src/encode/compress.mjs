@@ -1,6 +1,6 @@
-import quantize from '../quantize/quantize'
-import concatRGBA from './concatRGBA'
-import framize from './framize'
+import quantize from '../quantize/quantize.mjs'
+import concatRGBA from './concatRGBA.mjs'
+import framize from './framize.mjs'
 
 function compress(bufs, w, h, ps, prms) // prms:  onlyBlend, minBits, forbidPlte
 {

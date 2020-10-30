@@ -1,7 +1,7 @@
-import estats from './estats'
-import planeDst from './planeDst'
-import getKDtree from './getKDtree'
-import getNearest from './getNearest'
+import estats from './estats.mjs'
+import planeDst from './planeDst.mjs'
+import getKDtree from './getKDtree.mjs'
+import getNearest from './getNearest.mjs'
 
 function quantize(abuf, ps)
 {

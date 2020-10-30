@@ -1,8 +1,10 @@
-import {inflateRaw} from 'pako'
-import getBPP from './getBPP'
-import filterZero from './filterZero'
-import readInterlace from './readInterlace'
-import inflate from './inflate'
+import pako from 'pako'
+import getBPP from './getBPP.mjs'
+import filterZero from './filterZero.mjs'
+import readInterlace from './readInterlace.mjs'
+import inflate from './inflate.mjs'
+
+const {inflateRaw} = pako
 
 function decompress(out, dd, w, h) {
 	var time = Date.now();
