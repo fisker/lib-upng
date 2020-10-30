@@ -80,7 +80,7 @@
     "ava": "3.12.1",
     "cz-conventional-changelog": "3.3.0",
     "del-cli": "3.0.1",
-    "eslint": "7.9.0",
+    "eslint": "7.12.1",
     "husky": "4.3.0",
     "is-png": "2.0.0",
     "lint-staged": "10.4.0",
