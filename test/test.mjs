@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import isPng from 'is-png'
 import test from 'ava'
-import * as UPNG from '../src'
+import * as UPNG from '../src/index.js'
 
 // Tests from `imagemin-upng`, need refactor
 
