@@ -101,7 +101,7 @@ test('support options', async (t) => {
 })
 
 test('skip optimizing a non-PNG file', async (t) => {
-  const buffer = await fs.readFileSync(__filename)
+  const buffer = await fs.readFileSync(url.fileURLToPath(import.meta.url))
   const data = await upng()(buffer)
 
   t.is(data.length, buffer.length)
