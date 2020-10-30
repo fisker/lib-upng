@@ -2,7 +2,7 @@
 import pako from 'pako'
 import filterLine from './filterLine.mjs'
 
-const {inflateRaw} = pako
+const {deflate} = pako
 
 function filterZero(img,h,bpp,bpl,data, filter, levelZero)
 {
