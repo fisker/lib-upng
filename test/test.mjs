@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import url from 'url'
 import isPng from 'is-png'
 import test from 'ava'
 import * as UPNG from '../src/index.mjs'
@@ -38,7 +39,7 @@ function upng(options) {
 }
 
 function getFixture(file) {
-  return path.join(__dirname, 'fixtures', file)
+  return path.join(path.dirname(url.fileURLToPath(import.meta.url)), 'fixtures', file)
 }
 
 function readFixture(file) {
