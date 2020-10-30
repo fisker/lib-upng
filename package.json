@@ -49,7 +49,8 @@
     "lint:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --check",
     "release": "run-s lint build format test dist",
     "test": "ava",
-    "test-coverage": "nyc yarn test"
+    "test-coverage": "nyc yarn test",
+    "update-submodule": "git submodule update --remote --merge"
   },
   "config": {
     "commitizen": {
