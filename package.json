@@ -89,7 +89,7 @@
     "nyc": "15.1.0",
     "prettier": "2.2.0",
     "rollup": "2.33.3",
-    "sort-package-json": "1.46.1",
+    "sort-package-json": "1.48.0",
     "stylelint": "13.8.0"
   },
   "publishConfig": {
