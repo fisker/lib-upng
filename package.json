@@ -67,7 +67,7 @@
     ]
   },
   "dependencies": {
-    "pako": "2.0.4"
+    "pako": "2.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "17.2.0",
