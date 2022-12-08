@@ -104,12 +104,12 @@ function decode(buff)
 		else if(type=="IEND") {
 			break;
 		}
-		//else {  log("unknown chunk type", type, len);  }
+		//else {  console.log("unknown chunk type", type, len);  out.tabs[type]=data.slice(offset,offset+len);  }
 		offset += len;
 		var crc = bin.readUint(data, offset);  offset += 4;
 	}
 	if(foff!=0) {  var fr = out.frames[out.frames.length-1];
-		fr.data = decompress(out, fd.slice(0,foff), fr.rect.width, fr.rect.height);  foff=0;
+		fr.data = decompress(out, fd.slice(0,foff), fr.rect.width, fr.rect.height);
 	}
 	out.data = decompress(out, dd, out.width, out.height);
 

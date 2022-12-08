@@ -1,11 +1,12 @@
 import quantize from '../quantize/quantize.mjs'
 import concatRGBA from './concatRGBA.mjs'
 import framize from './framize.mjs'
+import dither from './dither.mjs'
 
 function compress(bufs, w, h, ps, prms) // prms:  onlyBlend, minBits, forbidPlte
 {
 	//var time = Date.now();
-	var onlyBlend = prms[0], evenCrd = prms[1], forbidPrev = prms[2], minBits = prms[3], forbidPlte = prms[4];
+	var onlyBlend = prms[0], evenCrd = prms[1], forbidPrev = prms[2], minBits = prms[3], forbidPlte = prms[4], dither=prms[5];
 
 	var ctype = 6, depth = 8, alphaAnd=255
 
@@ -26,13 +27,22 @@ function compress(bufs, w, h, ps, prms) // prms:  onlyBlend, minBits, forbidPlte
 	if(ps!=0) {
 		var nbufs = [];  for(var i=0; i<frms.length; i++) nbufs.push(frms[i].img.buffer);
 
-    // @fisker Original commit, next line use `console.log`
-		var abuf = concatRGBA(nbufs), qres = quantize(abuf, ps);  // console.log(qres);
-		var cof = 0, bb = new Uint8Array(qres.abuf);
-		for(var i=0; i<frms.length; i++) {  var ti=frms[i].img, bln=ti.length;  inds.push(new Uint8Array(qres.inds.buffer, cof>>2, bln>>2));
-			for(var j=0; j<bln; j+=4) {  ti[j]=bb[cof+j];  ti[j+1]=bb[cof+j+1];  ti[j+2]=bb[cof+j+2];  ti[j+3]=bb[cof+j+3];  }    cof+=bln;  }
+		var abuf = concatRGBA(nbufs), qres = quantize(abuf, ps);
 
 		for(var i=0; i<qres.plte.length; i++) plte.push(qres.plte[i].est.rgba);
+
+		var cof = 0;
+		for(var i=0; i<frms.length; i++) {
+			var frm=frms[i], bln=frm.img.length, ind = new Uint8Array(qres.inds.buffer, cof>>2, bln>>2);  inds.push(ind);
+			var bb = new Uint8Array(qres.abuf,cof,bln);
+
+			//console.log(frm.img, frm.width, frm.height);
+			//var time = Date.now();
+			if(dither) dither(frm.img, frm.rect.width, frm.rect.height, plte, bb, ind);
+			//console.log(Date.now()-time);
+			frm.img.set(bb);  cof+=bln;
+		}
+
 		//console.log("quantize", Date.now()-time);  time = Date.now();
 	}
 	else {

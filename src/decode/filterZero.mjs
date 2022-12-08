@@ -6,7 +6,7 @@ function filterZero(data, out, off, w, h)
 	var bpp = getBPP(out), bpl = Math.ceil(w*bpp/8);
 	bpp = Math.ceil(bpp/8);
 
-	var i=0, di=1, type=data[off], x=0;
+	var i, di, type=data[off], x=0;
 
 	if(type>1) data[off]=[0,0,1][type-2];
 	if(type==3) for(x=bpp; x<bpl; x++) data[x+1] = (data[x+1] + (data[x+1-bpp]>>>1) )&255;
