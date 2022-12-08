@@ -30,8 +30,8 @@ function upng(options) {
         img.width,
         img.height,
         options.cnum,
-        img.frames.map(({delay}) => delay)
-      )
+        img.frames.map(({delay}) => delay),
+      ),
     )
 
     return output
@@ -39,7 +39,11 @@ function upng(options) {
 }
 
 function getFixture(file) {
-  return path.join(path.dirname(url.fileURLToPath(import.meta.url)), 'fixtures', file)
+  return path.join(
+    path.dirname(url.fileURLToPath(import.meta.url)),
+    'fixtures',
+    file,
+  )
 }
 
 function readFixture(file) {
