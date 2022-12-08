@@ -5,4 +5,4 @@
 - rewrite in esm
 - `umd`, `cjs`, `esm` format
 
-current version: [c976240e62b0497167f8aafabd7889625f8b2016](https://github.com/photopea/UPNG.js/commit/c976240e62b0497167f8aafabd7889625f8b2016)
+current version: [a4eafb5c77072162be3a6d968ac67d238a9d01ac](https://github.com/photopea/UPNG.js/commit/a4eafb5c77072162be3a6d968ac67d238a9d01ac)
