@@ -1,6 +1,6 @@
-import stats from './stats.mjs'
-import estats from './estats.mjs'
-import splitPixels from './splitPixels.mjs'
+import stats from './stats.js'
+import estats from './estats.js'
+import splitPixels from './splitPixels.js'
 
 function getKDtree(nimg, ps, err) {
 	if(err==null) err = 0.0001;

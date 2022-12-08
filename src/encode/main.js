@@ -1,5 +1,5 @@
-import * as bin from '../shared/bin.mjs'
-import crc from './crc.mjs'
+import * as bin from '../shared/bin.js'
+import crc from './crc.js'
 
 function main(nimg, w, h, dels, tabs) {
 	if(tabs==null) tabs={};

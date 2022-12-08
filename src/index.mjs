@@ -1,5 +1,0 @@
-export {default as encode} from './encode/encode.mjs'
-export {default as encodeLL} from './encode/encodeLL.mjs'
-export {default as decode} from './decode/decode.mjs'
-export {default as toRGBA8} from './decode/toRGBA8.mjs'
-export {default as quantize} from './quantize/quantize.mjs'

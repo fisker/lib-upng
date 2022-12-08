@@ -1,8 +1,8 @@
 import pako from 'pako'
-import getBPP from './getBPP.mjs'
-import filterZero from './filterZero.mjs'
-import readInterlace from './readInterlace.mjs'
-import inflate from './inflate.mjs'
+import getBPP from './getBPP.js'
+import filterZero from './filterZero.js'
+import readInterlace from './readInterlace.js'
+import inflate from './inflate.js'
 
 const {inflateRaw} = pako
 

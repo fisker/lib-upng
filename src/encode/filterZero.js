@@ -1,6 +1,6 @@
 
 import pako from 'pako'
-import filterLine from './filterLine.mjs'
+import filterLine from './filterLine.js'
 
 const {deflate} = pako
 

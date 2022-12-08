@@ -1,4 +1,4 @@
-import vecDot from './vecDot.mjs'
+import vecDot from './vecDot.js'
 
 function splitPixels(nimg, nimg32, i0, i1, e, eMq)
 {

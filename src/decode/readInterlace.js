@@ -1,5 +1,5 @@
-import filterZero from './filterZero.mjs'
-import getBPP from './getBPP.mjs'
+import filterZero from './filterZero.js'
+import getBPP from './getBPP.js'
 
 function readInterlace(data, out)
 {

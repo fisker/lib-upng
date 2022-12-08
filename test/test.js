@@ -3,7 +3,7 @@ import path from 'path'
 import url from 'url'
 import isPng from 'is-png'
 import test from 'ava'
-import * as UPNG from '../src/index.mjs'
+import * as UPNG from '../src/index.js'
 
 // Tests from `imagemin-upng`, need refactor
 

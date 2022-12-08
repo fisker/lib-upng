@@ -1,6 +1,6 @@
 import {
   readUint
-} from '../shared/bin.mjs'
+} from '../shared/bin.js'
 
 function IHDR(data, offset, out)
 {

@@ -1,5 +1,5 @@
-import paeth from '../shared/paeth.mjs'
-import getBPP from './getBPP.mjs'
+import paeth from '../shared/paeth.js'
+import getBPP from './getBPP.js'
 
 function filterZero(data, out, off, w, h)
 {

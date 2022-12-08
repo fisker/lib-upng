@@ -2,6 +2,7 @@
   "name": "lib-upng",
   "version": "2.0.1",
   "description": "UPNG.js",
+  "type": "module",
   "keywords": [
     "UPNG",
     "UPNG.js",
@@ -27,6 +28,13 @@
   "unpkg": "dist/index.js",
   "module": "dist/index.mjs",
   "browser": "dist/index.js",
+  "exports": {
+    ".": {
+      "require": "./dist/index.common.js",
+      "default": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  },
   "files": [
     "dist"
   ],
