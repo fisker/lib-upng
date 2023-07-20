@@ -98,7 +98,7 @@
     "prettier": "2.8.8",
     "rollup": "3.26.2",
     "sort-package-json": "2.5.1",
-    "stylelint": "15.10.1"
+    "stylelint": "15.10.2"
   },
   "publishConfig": {
     "access": "public",
